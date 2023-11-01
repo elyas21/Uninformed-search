@@ -92,7 +92,7 @@ def depthFirstSearch(problem: SearchProblem):
 
     initialState = problem.getStartState()
     tobeExplore = util.Stack()
-    explored = []
+    explored = set()
 
     tobeExplore.push((initialState, [], 0))
 
@@ -100,7 +100,7 @@ def depthFirstSearch(problem: SearchProblem):
         currentState, actions, costs = tobeExplore.pop()
         if not currentState in explored:  # prevent loop
 
-            explored.append(currentState)  # insert into vistedList
+            explored.add(currentState)  # insert into vistedList
 
             if problem.isGoalState(currentState):
                 return actions
@@ -117,7 +117,7 @@ def breadthFirstSearch(problem: SearchProblem):
 
     initialState = problem.getStartState()
     tobeExplore = util.Queue()
-    explored = []
+    explored = set()
 
     tobeExplore.push((initialState, [], 0))
 
@@ -126,7 +126,7 @@ def breadthFirstSearch(problem: SearchProblem):
 
         if not currentState in explored:
 
-            explored.append(currentState)
+            explored.add(currentState)
 
             if problem.isGoalState(currentState):
                 return actions
@@ -145,7 +145,7 @@ def uniformCostSearch(problem: SearchProblem):
     initialState = problem.getStartState()
 
     tobeExplore = util.PriorityQueue()
-    explored = []
+    explored = set()
 
     tobeExplore.push((initialState, [], 0), 0)
 
@@ -154,7 +154,7 @@ def uniformCostSearch(problem: SearchProblem):
 
         if not currentState in explored:
 
-            explored.append(currentState)
+            explored.add(currentState)
 
             if problem.isGoalState(currentState):
                 return actions
